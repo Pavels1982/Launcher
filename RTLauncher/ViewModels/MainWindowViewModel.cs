@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using MaterialDesignThemes;
 
 namespace RTLauncher.ViewModels
 {
@@ -17,10 +18,23 @@ namespace RTLauncher.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
 
         private Control[] Controls;
-      
+        private Control selectedControl;
+
         public ObservableCollection<Control> ControlList { get; set; } = new ObservableCollection<Control>();
 
-        public Control SelectedControl { get; set; }
+        public Control SelectedControl 
+        {
+
+            get
+            {
+                return selectedControl;
+            }
+
+            set
+            {
+                selectedControl = value;
+            }
+        }
       
         public bool IsMenuOpen { get; set; }
 
@@ -39,6 +53,7 @@ namespace RTLauncher.ViewModels
         public MainWindowViewModel()
         {
             CreateControls();
+            Controls.ToList().ForEach(c => ControlList.Add(c));
             SelectedControl = Controls.Where(c => c.Title == "Home").FirstOrDefault() as Control;
         }
 
@@ -50,13 +65,13 @@ namespace RTLauncher.ViewModels
                 new Control(
                     new HomeControl(),
                     new HomeControlViewModel(),
-                    null,
+                    MaterialDesignThemes.Wpf.PackIconKind.Home,
                     "Home"),
 
                new Control(
                     new SettingControl(),
                     new SettingControlViewModel(),
-                    null,
+                    MaterialDesignThemes.Wpf.PackIconKind.Settings,
                     "Settings"),
 
             };

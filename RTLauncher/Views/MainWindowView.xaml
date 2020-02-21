@@ -61,15 +61,13 @@
         </Grid>
         
 
-
-
-
-
         <ScrollViewer 
             Grid.Row="1"
             Grid.Column="1"
             VerticalScrollBarVisibility="Auto">
-            <ContentControl Content="{Binding SelectedControl.Content}"/>
+            <ContentControl 
+                Background="{DynamicResource MaterialDesignPaper}"
+                Content="{Binding SelectedControl.Content}" />
         </ScrollViewer>
 
         <Grid
@@ -79,8 +77,37 @@
             Grid.ColumnSpan="2"
             Width="40"
             Background="{DynamicResource PrimaryHueMidBrush}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <ListBox                 
+                Grid.Row="1"
+                ItemsSource="{Binding ControlList, Mode=TwoWay}"
+                SelectedItem="{Binding SelectedControl, Mode=TwoWay}"
+                >
+                <ListBox.Resources>
+                    <Style TargetType="ScrollBar" BasedOn="{StaticResource MaterialDesignScrollBarMinimal}"/>
+                </ListBox.Resources>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon 
+                                Margin="4 4 0 0 "
+                                Kind="{Binding Path=Icon}"/>
+                            <TextBlock
+                            Margin="32 0 32 0"
+                            Foreground="White"
+                            FontSize="18"
+                            Text="{Binding Path=Title}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
 
             <Button 
+                Grid.Row="0"
                 x:Name="ButtonCloseMenu"
                 VerticalAlignment="Top" 
                 HorizontalAlignment="Right" 
@@ -103,6 +130,7 @@
             </Button>
            
             <Button 
+                Grid.Row="0"
                 x:Name="ButtonOpenMenu"
                 VerticalAlignment="Top" 
                 HorizontalAlignment="Right" 
