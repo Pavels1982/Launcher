@@ -13,6 +13,7 @@
         TextElement.FontSize="13"
         TextOptions.TextFormattingMode="Ideal" 
         TextOptions.TextRenderingMode="Auto"
+        ShowInTaskbar="False"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{StaticResource MaterialDesignFont}"
         >
@@ -57,7 +58,43 @@
         <Grid
             Grid.Column="1"
             Grid.Row="0">
-            
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
+                <Button Background="{x:Null}" BorderBrush="{x:Null}" Width="20" Height="20" Click="HideToTray">
+                    <materialDesign:PackIcon
+                        Foreground="White"
+                        Kind="WindowMinimize" 
+                        Margin="-14 0 0 0"/>
+                </Button>
+
+                <Button Background="{x:Null}" BorderBrush="{x:Null}" Width="20" Height="20" Click="StateWindow">
+                    <materialDesign:PackIcon 
+                        Foreground="White"
+                        Margin="-14 -4 0 0">
+                        <materialDesign:PackIcon.Style>
+                            <Style TargetType="materialDesign:PackIcon">
+                                <Setter Property="Kind" Value="WindowMaximize"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsWindowMaximize,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}" Value="True">
+                                        <Setter Property="Kind" Value="WindowRestore"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </materialDesign:PackIcon.Style>
+                    </materialDesign:PackIcon>
+                </Button>
+
+                <Button Background="{x:Null}" BorderBrush="{x:Null}" Width="20" Height="20" Command="{Binding CloseAppCommand}">
+
+                    <materialDesign:PackIcon 
+                        Foreground="White"
+                        Kind="WindowClose" Margin="-14 -4 0 0"/>
+
+                </Button>
+
+
+            </StackPanel>
+
         </Grid>
         
 

@@ -30,6 +30,18 @@ namespace RTLauncher.ViewModels
                 });
             }
         }
+
+        public ICommand HideToTrayCommand
+        {
+            get 
+            {
+                return new RelayCommand((o) => 
+                { 
+                
+
+                });             
+            }
+        }
         public MainWindowViewModel()
         {
             AppControlManager.AppPages.ForEach(c => ControlList.Add(c));
