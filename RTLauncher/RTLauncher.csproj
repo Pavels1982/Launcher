@@ -87,7 +87,8 @@
     <Compile Include="CustomControls\SettingControl.xaml.cs">
       <DependentUpon>SettingControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\Control.cs" />
+    <Compile Include="Models\AppControl.cs" />
+    <Compile Include="Services\AppControlManager.cs" />
     <Compile Include="Services\RelayCommand.cs" />
     <Compile Include="ViewModels\HomeControlViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />

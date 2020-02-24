@@ -67,7 +67,7 @@
             VerticalScrollBarVisibility="Auto">
             <ContentControl 
                 Background="{DynamicResource MaterialDesignPaper}"
-                Content="{Binding SelectedControl.Content}" />
+                Content="{Binding SelectedControl.View}" />
         </ScrollViewer>
 
         <Grid

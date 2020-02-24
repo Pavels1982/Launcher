@@ -10,34 +10,16 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using MaterialDesignThemes;
+using RTLauncher.Services;
 
 namespace RTLauncher.ViewModels
 {
     public class MainWindowViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-
-        private Control[] Controls;
-        private Control selectedControl;
-
-        public ObservableCollection<Control> ControlList { get; set; } = new ObservableCollection<Control>();
-
-        public Control SelectedControl 
-        {
-
-            get
-            {
-                return selectedControl;
-            }
-
-            set
-            {
-                selectedControl = value;
-            }
-        }
-      
+        public ObservableCollection<AppControl> ControlList { get; set; } = new ObservableCollection<AppControl>();
+        public AppControl SelectedControl { get; set; }
         public bool IsMenuOpen { get; set; }
-
         public ICommand MenuAction
         {
             get
@@ -48,34 +30,13 @@ namespace RTLauncher.ViewModels
                 });
             }
         }
-
-
         public MainWindowViewModel()
         {
-            CreateControls();
-            Controls.ToList().ForEach(c => ControlList.Add(c));
-            SelectedControl = Controls.Where(c => c.Title == "Home").FirstOrDefault() as Control;
+            AppControlManager.AppPages.ForEach(c => ControlList.Add(c));
+            if (ControlList != null)
+            {
+                SelectedControl = ControlList.FirstOrDefault();
+            }
         }
-
-
-        public void CreateControls()
-        {
-            Controls = new Control[] {
-
-                new Control(
-                    new HomeControl(),
-                    new HomeControlViewModel(),
-                    MaterialDesignThemes.Wpf.PackIconKind.Home,
-                    "Home"),
-
-               new Control(
-                    new SettingControl(),
-                    new SettingControlViewModel(),
-                    MaterialDesignThemes.Wpf.PackIconKind.Settings,
-                    "Settings"),
-
-            };
-        }
-
     }
 }

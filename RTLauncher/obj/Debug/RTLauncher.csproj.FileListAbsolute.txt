@@ -50,3 +50,4 @@ C:\Users\Pavel\Desktop\Работа\RTLauncher\Launcher\RTLauncher\obj\Debug\RTL
 C:\Users\Pavel\Desktop\Работа\RTLauncher\Launcher\RTLauncher\obj\Debug\RTLauncher.csproj.CopyComplete
 C:\Users\Pavel\Desktop\Работа\RTLauncher\Launcher\RTLauncher\obj\Debug\RTLauncher.exe
 C:\Users\Pavel\Desktop\Работа\RTLauncher\Launcher\RTLauncher\obj\Debug\RTLauncher.pdb
+C:\Users\Pavel\Desktop\Работа\RTLauncher\Launcher\RTLauncher\obj\Debug\RTLauncher.csprojAssemblyReference.cache
